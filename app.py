@@ -271,6 +271,7 @@ def update_dose(flights, xrays):
     total_dose = (flights * 0.04) + (xrays * 0.1)
     return f"Your estimated annual radiation dose from selected activities: {total_dose:.2f} mSv"
 
+
 # Run the app
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8050))
