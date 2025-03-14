@@ -26,11 +26,8 @@ df = pd.DataFrame(list(radiation_sources.items()), columns=["Source", "Dose (mSv
 # Define dose values
 dose_values = np.linspace(0, 100, 100)
 
-# Risk models calculations
+# LNT Model: Risk increases linearly with dose
 lnt_risk = dose_values * 0.01
-threshold_dose = 10
-threshold_risk = np.where(dose_values < threshold_dose, 0, (dose_values - threshold_dose) * 0.01)
-hormesis_risk = -0.005 * np.exp(-dose_values / 20) + dose_values * 0.005
 
 # Layout for the app
 app.layout = html.Div(
@@ -42,7 +39,7 @@ app.layout = html.Div(
         # Navigation Bar
         html.Div([
             html.A('Exposure Sources | ', href='#exposure', style={'cursor': 'pointer', 'textDecoration': 'none'}),
-            html.A('Dose-Response Models | ', href='#models', style={'cursor': 'pointer', 'textDecoration': 'none'}),
+            html.A('Dose-Response Model | ', href='#models', style={'cursor': 'pointer', 'textDecoration': 'none'}),
             html.A('Calculator | ', href='#calculator', style={'cursor': 'pointer', 'textDecoration': 'none'}),
             html.A('FAQ | ', href='#faq', style={'cursor': 'pointer', 'textDecoration': 'none'}),
             html.A('Conclusion', href='#conclusion', style={'cursor': 'pointer', 'textDecoration': 'none'})
@@ -90,25 +87,21 @@ app.layout = html.Div(
             html.P("The chart above compares radiation doses from common sources, providing insight into relative exposure levels."),
         ]),
 
-        # Dose-Response Models Section
+        # Dose-Response Model Section (LNT only)
         html.Div(id='models', children=[
-            html.H3("Dose-Response Models: LNT vs. Threshold vs. Hormesis"),
+            html.H3("Dose-Response Model: Linear No-Threshold (LNT)"),
             dcc.Graph(
                 figure={
                     "data": [
                         go.Scatter(x=dose_values, y=lnt_risk, mode='lines', name='Linear No-Threshold (LNT)',
                                    line=dict(color='red')),
-                        go.Scatter(x=dose_values, y=threshold_risk, mode='lines', name='Threshold Model',
-                                   line=dict(color='blue', dash='dash')),
-                        go.Scatter(x=dose_values, y=hormesis_risk, mode='lines', name='Hormesis Model',
-                                   line=dict(color='green', dash='dot')),
                     ],
-                    "layout": go.Layout(title="Radiation Dose-Response Models", xaxis_title="Radiation Dose (mSv)",
-                                        yaxis_title="Relative Risk")
+                    "layout": go.Layout(title="Radiation Dose-Response Model (LNT)", 
+                                      xaxis_title="Radiation Dose (mSv)",
+                                      yaxis_title="Relative Risk")
                 }
             ),
-            html.P("The LNT model assumes all radiation exposure carries some risk, while the Threshold model assumes there is a safe limit."),
-            html.P("The Hormesis model suggests that low levels of radiation may be beneficial."),
+            html.P("The LNT model assumes all radiation exposure carries some risk, with no safe threshold."),
         ]),
 
         # Calculator Section
@@ -173,14 +166,6 @@ app.layout = html.Div(
                         html.A("Learn more", href="https://www.nrc.gov/reading-rm/basic-ref/glossary/ionizing-radiation.html", target="_blank")])
             ]),
             html.Details([
-                html.Summary("What is radiation hormesis?"),
-                html.P("Radiation hormesis is the hypothesis that low doses of ionizing radiation may be beneficial by stimulating physiological performance, "
-                       "immune competence, and overall health. Although this is a controversial topic in health physics, some studies suggest "
-                       "that small doses of radiation may increase lifespan."),
-                html.P(["Source: Luckey TD. Radiation Hormesis Study. ", 
-                        html.A("Learn more", href="https://doi.org/10.2203/dose-response.06-102.Luckey", target="_blank")])
-            ]),
-            html.Details([
                 html.Summary("Does radiation exposure always cause cancer?"),
                 html.P("No. While high doses and dose rates may cause cancer, there is no public health data that shows an increased occurrence of cancer "
                        "due to low radiation doses and low dose rates."),
@@ -220,11 +205,10 @@ app.layout = html.Div(
                 this website aims to provide clarity on this complex subject, helping users navigate the balance between precaution and practicality.
             """),
             html.P("""
-                Different models of radiation risk such as the Linear No-Threshold (LNT), Threshold, and Hormesis reflect the ongoing debate among 
-                scientists and regulators. The LNT model assumes all exposure carries some risk, while the Threshold model suggests a safe limit, 
-                and the Hormesis model argues that low doses may even be beneficial. These perspectives influence safety standards and policies, 
-                affecting everything from occupational exposure limits to space exploration guidelines. By understanding these models, 
-                individuals can make informed decisions regarding radiation-related risks and make choices based on scientific evidence rather than fear.
+                The Linear No-Threshold (LNT) model assumes all radiation exposure carries some risk, with no safe threshold. 
+                This perspective influences safety standards and policies, affecting everything from occupational exposure limits 
+                to medical imaging guidelines. By understanding this model, individuals can make informed decisions regarding 
+                radiation-related risks based on scientific evidence rather than fear.
             """),
             html.P("""
                 In conclusion, radiation is a part of everyday life, and complete avoidance is neither necessary nor possible. 
