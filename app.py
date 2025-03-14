@@ -55,7 +55,7 @@ app.layout = html.Div(
 # Introduction Section
 html.Div(id="introduction", children=[
     html.H3("Introduction"),
-    
+
     html.P("Radiation – the word sounds scary. But what is it really? "
            "Would it surprise you to know that you experience radiation every day? "
            "Radiation can be broadly defined as energy that travels in waves or particles. "
