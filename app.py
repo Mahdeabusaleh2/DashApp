@@ -80,18 +80,18 @@ app.layout = html.Div([
     ])  # ✅ Correctly closed Introduction Section
 ])
 
-    # Radiation Exposure Section
-    html.Div(id='exposure', children=[
-        html.H3("Radiation Exposure from Common Sources"),
-        dcc.Graph(
-            figure={
-                "data": [go.Bar(x=df["Source"], y=df["Dose (mSv)"], marker_color='blue')],
-                "layout": go.Layout(title="Radiation Dose Comparison (mSv)", xaxis_title="Source",
-                                    yaxis_title="Dose (mSv)")
-            }
-        ),
-        html.P("The chart above compares radiation doses from common sources, providing insight into relative exposure levels."),
-    ]),
+# Radiation Exposure Section
+html.Div(id='exposure', children=[
+    html.H3("Radiation Exposure from Common Sources"),
+    dcc.Graph(
+        figure={
+            "data": [go.Bar(x=df["Source"], y=df["Dose (mSv)"], marker_color='blue')],
+            "layout": go.Layout(title="Radiation Dose Comparison (mSv)", xaxis_title="Source",
+                                yaxis_title="Dose (mSv)")
+        }
+    ),
+    html.P("The chart above compares radiation doses from common sources, providing insight into relative exposure levels."),
+])  # ✅ Ensuring proper indentation and closing brackets
 
 # Dose-Response Models Section (Only LNT)
 html.Div(id='models', children=[
@@ -109,19 +109,21 @@ html.Div(id='models', children=[
     ),
     html.P("The Linear No-Threshold (LNT) model assumes all radiation exposure carries some risk, "
            "no matter how small."),
-])
+]),  # ✅ Ensuring correct indentation & bracket closure
 
-    # Calculator Section
-    html.Div(id='calculator', children=[
-        html.H3("Personal Radiation Exposure Calculator"),
-        html.Label("Number of flights per year (NYC to LA equivalent):"),
-        dcc.Slider(0, 50, 1, value=5, marks={i: str(i) for i in range(0, 51, 10)}, id='flight-slider'),
+# Calculator Section
+html.Div(id='calculator', children=[
+    html.H3("Personal Radiation Exposure Calculator"),
+    
+    html.Label("Number of flights per year (NYC to LA equivalent):"),
+    dcc.Slider(0, 50, 1, value=5, marks={i: str(i) for i in range(0, 51, 10)}, id='flight-slider'),
 
-        html.Label("Number of chest X-rays per year:"),
-        dcc.Slider(0, 10, 1, value=1, marks={i: str(i) for i in range(0, 11)}, id='xray-slider'),
+    html.Label("Number of chest X-rays per year:"),
+    dcc.Slider(0, 10, 1, value=1, marks={i: str(i) for i in range(0, 11)}, id='xray-slider'),
 
-        html.Div(id='total-dose-output', style={'fontSize': 20, 'marginTop': 20}),
-    ]),
+    html.Div(id='total-dose-output', style={'fontSize': 20, 'marginTop': 20}),
+])  # ✅ Ensuring correct indentation & bracket closure
+
 
 # FAQ Section
 html.Div(id='faq', children=[
@@ -196,29 +198,29 @@ html.Div(id='faq', children=[
         html.P(["Source: U.S. NRC - Radiation Exposure and Cancer. ", 
                 html.A("Learn more", href="https://www.nrc.gov/about-nrc/radiation/health-effects/rad-exposure-cancer.html", target="_blank")])
     ])
-])  # ✅ This ensures the FAQ section is properly closed
+])  # ✅ Ensuring correct indentation & closing brackets
 
 # References Section
 html.Div(id='references', children=[
     html.H3("References"),
-    
+
     html.Ul([
-        html.Li(html.A("Health Physics Society", 
+        html.Li(html.A("Health Physics Society",
                        href="https://hps.org/hpspublications/radiationfactsheets.html", target="_blank")),
-        html.Li(html.A("International Commission on Radiological Protection (ICRP)", 
+        html.Li(html.A("International Commission on Radiological Protection (ICRP)",
                        href="https://www.icrp.org/page.asp?id=5", target="_blank")),
-        html.Li(html.A("National Council on Radiation Protection and Measurements (NCRP)", 
+        html.Li(html.A("National Council on Radiation Protection and Measurements (NCRP)",
                        href="https://ncrponline.org/", target="_blank")),
-        html.Li(html.A("BEIR VII Reports", 
+        html.Li(html.A("BEIR VII Reports",
                        href="https://nap.nationalacademies.org/resource/11340/beir_vii_final.pdf", target="_blank")),
-        html.Li(html.A("National Institutes of Health (NIH)", 
+        html.Li(html.A("National Institutes of Health (NIH)",
                        href="https://www.nih.gov/", target="_blank")),
-        html.Li(html.A("United States Nuclear Regulatory Commission (U.S. NRC)", 
+        html.Li(html.A("United States Nuclear Regulatory Commission (U.S. NRC)",
                        href="https://www.nrc.gov/", target="_blank")),
-        html.Li(html.A("Centers for Disease Control and Prevention (CDC)", 
+        html.Li(html.A("Centers for Disease Control and Prevention (CDC)",
                        href="https://www.cdc.gov/", target="_blank")),
-    ]),
-])
+    ])
+]),  # ✅ Fixed Closing Bracket for References Section
 
 # Conclusion Section
 html.Div(id='conclusion', children=[
@@ -246,19 +248,19 @@ html.Div(id='conclusion', children=[
         take the correct precautions without unnecessary anxiety. This site serves as a foundation for further exploration and encourages 
         users to continue learning about radiation safety from reliable sources.
     """)
-])
+]),  # ✅ Fixed Closing Bracket for Conclusion Section
 
-    # Video Section
-    html.Div(id="video", children=[
-        html.H3("Radiation Exposure Explained - Video Resource"),
-        html.Iframe(
-            src="https://www.youtube.com/embed/uzqsnxZBLNE",
-            width="700",
-            height="400",
-            style={"border": "none", "display": "block", "margin": "auto"}
-        )
-    ])
-])
+# Video Section
+html.Div(id="video", children=[
+    html.H3("Radiation Exposure Explained - Video Resource"),
+    html.Iframe(
+        src="https://www.youtube.com/embed/uzqsnxZBLNE",
+        width="700",
+        height="400",
+        style={"border": "none", "display": "block", "margin": "auto"}
+    )
+])  # ✅ Fixed Closing Bracket for Video Section
+
 
 # Callback for radiation dose calculator
 @app.callback(
