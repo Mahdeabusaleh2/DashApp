@@ -55,32 +55,32 @@ app.layout = html.Div(
 # Introduction Section
 html.Div(id="introduction", children=[
     html.H3("Introduction"),
-    html.P("""
-        Radiation – the word sounds scary. But what is it really? Would it surprise you to know that you experience radiation every day? 
-        Radiation can be broadly defined as energy that travels in waves or particles. Radiation is typically broken down into two categories.
-    """),
-    html.P("""
-        Non-Ionizing Radiation is low energy in nature, so it is generally safe. This type of radiation shows up in your everyday life 
-        as microwaves, radio waves, and visible light.
-    """),
-    html.P("""
-        The higher energy of Ionizing Radiation allows it to kick out electrons from an atom. X-rays and gamma rays (and some UV rays) 
-        are examples of ionizing radiation. This type of radiation can be potentially harmful to a human. We experience these types of 
-        radiation usually only in special situations.
-    """),
-    html.P("""
-        We are exposed to low levels of X-rays when we have an x-ray image of our bones. CAT scans and Mammograms also use X-rays to image our bodies.
-    """),
-    html.P("""
-        We encounter Gamma Rays in small amounts if we have a PET scan or if we travel in an airplane. Solar flares also emit gamma rays that can reach the earth. 
-        Some other natural sources of gamma rays are from naturally occurring radon gas and trace amounts of uranium ore in our soil.
-    """),
-    html.P("""
-        For the most part, even the ionizing radiation we experience on a daily basis is harmless. However, long-term exposure to these low dose 
-        sources can accumulate and potentially affect us in different ways. We address some of those sources as well as the potential effects of such exposure.
-    """)
-])  # ✅ Ensuring correct indentation and closing brackets
+    
+    html.P("Radiation – the word sounds scary. But what is it really? "
+           "Would it surprise you to know that you experience radiation every day? "
+           "Radiation can be broadly defined as energy that travels in waves or particles. "
+           "Radiation is typically broken down into two categories."),
 
+    html.P("Non-Ionizing Radiation is low energy in nature, so it is generally safe. "
+           "This type of radiation shows up in your everyday life as microwaves, radio waves, and visible light."),
+
+    html.P("The higher energy of Ionizing Radiation allows it to kick out electrons from an atom. "
+           "X-rays and gamma rays (and some UV rays) are examples of ionizing radiation. "
+           "This type of radiation can be potentially harmful to a human. "
+           "We experience these types of radiation usually only in special situations."),
+
+    html.P("We are exposed to low levels of X-rays when we have an X-ray image of our bones. "
+           "CAT scans and Mammograms also use X-rays to image our bodies."),
+
+    html.P("We encounter Gamma Rays in small amounts if we have a PET scan or if we travel in an airplane. "
+           "Solar flares also emit gamma rays that can reach the earth. "
+           "Some other natural sources of gamma rays are from naturally occurring radon gas "
+           "and trace amounts of uranium ore in our soil."),
+
+    html.P("For the most part, even the ionizing radiation we experience on a daily basis is harmless. "
+           "However, long-term exposure to these low dose sources can accumulate and potentially affect us "
+           "in different ways. We address some of those sources as well as the potential effects of such exposure.")
+])  # ✅ Ensuring correct indentation and closing brackets
 
         # Radiation Exposure Section
         html.Div(id='exposure', children=[
