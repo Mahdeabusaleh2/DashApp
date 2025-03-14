@@ -108,25 +108,63 @@ app.layout = html.Div([
         ]),
     ]),
 
-    # References Section
-    html.Div(id='references', children=[
-        html.H3("References"),
-        html.Ul([
-            html.Li(html.A("Health Physics Society",
-                           href="https://hps.org/hpspublications/radiationfactsheets.html", target="_blank")),
-            html.Li(html.A("National Institutes of Health (NIH)",
-                           href="https://www.nih.gov/", target="_blank")),
-        ]),
-    ]),
+# References Section
+html.Div(id='references', children=[
+    html.H3("References"),
+    html.Ul([
+        html.Li(html.A("Health Physics Society",
+                       href="https://hps.org/hpspublications/radiationfactsheets.html", target="_blank")),
+        html.Li(html.A("International Commission on Radiological Protection (ICRP)",
+                       href="https://www.icrp.org/page.asp?id=5", target="_blank")),
+        html.Li(html.A("National Council on Radiation Protection and Measurements (NCRP)",
+                       href="https://ncrponline.org/", target="_blank")),
+        html.Li(html.A("BEIR VII Reports",
+                       href="https://nap.nationalacademies.org/resource/11340/beir_vii_final.pdf", target="_blank")),
+        html.Li(html.A("National Institutes of Health (NIH)",
+                       href="https://www.nih.gov/", target="_blank")),
+        html.Li(html.A("United States Nuclear Regulatory Commission (U.S. NRC)",
+                       href="https://www.nrc.gov/", target="_blank")),
+        html.Li(html.A("Centers for Disease Control and Prevention (CDC)",
+                       href="https://www.cdc.gov/", target="_blank")),
+    ])
+]),  # ✅ Ensuring the References section is properly closed
 
-    # Conclusion Section
-    html.Div(id='conclusion', children=[
-        html.H3("Conclusion"),
-        html.P("Understanding radiation exposure and risk is important in making informed decisions."),
-        html.P("By breaking down exposure sources, dose-response models, and personal risk factors, "
-               "this website aims to provide clarity on this complex subject."),
-    ]),
-])
+# Conclusion Section
+html.Div(id='conclusion', children=[
+    html.H3("Conclusion"),
+    html.P("""
+        Understanding radiation exposure and risk is important in making informed decisions about health and safety. 
+        While radiation often has a bad stigma attached to it, as being associated with danger, it is also an essential part of modern life, 
+        from medical diagnostics to energy production. By breaking down exposure sources, dose-response models, and personal risk factors, 
+        this website aims to provide clarity on this complex subject, helping users navigate the balance between precaution and practicality.
+    """),
+    html.P("""
+        Different models of radiation risk such as the Linear No-Threshold (LNT), Threshold, and Hormesis reflect the ongoing debate among 
+        scientists and regulators. The LNT model assumes all exposure carries some risk, while the Threshold model suggests a safe limit, 
+        and the Hormesis model argues that low doses may even be beneficial. These perspectives influence safety standards and policies, 
+        affecting everything from occupational exposure limits to space exploration guidelines. By understanding these models, 
+        individuals can make informed decisions regarding radiation-related risks and make choices based on scientific evidence rather than fear.
+    """),
+    html.P("""
+        In conclusion, radiation is a part of everyday life, and complete avoidance is neither necessary nor possible. 
+        Instead, the key is risk awareness and responsible decision-making. Whether considering medical procedures, 
+        occupational hazards, or lifestyle choices, having a solid understanding of radiation principles allows individuals to 
+        take the correct precautions without unnecessary anxiety. This site serves as a foundation for further exploration and encourages 
+        users to continue learning about radiation safety from reliable sources.
+    """)
+]),  # ✅ Ensuring the Conclusion section is properly closed
+
+# Video Section
+html.Div(id="video", children=[
+    html.H3("Radiation Exposure Explained - Video Resource"),
+    html.Iframe(
+        src="https://www.youtube.com/embed/uzqsnxZBLNE",
+        width="700",
+        height="400",
+        style={"border": "none", "display": "block", "margin": "auto"}
+    )
+])  # ✅ Ensuring the Video section is properly closed
+
 
 # Callback for radiation dose calculator
 @app.callback(
