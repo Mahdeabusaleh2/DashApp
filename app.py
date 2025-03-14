@@ -122,7 +122,7 @@ html.Div(id='calculator', children=[
     dcc.Slider(0, 10, 1, value=1, marks={i: str(i) for i in range(0, 11)}, id='xray-slider'),
 
     html.Div(id='total-dose-output', style={'fontSize': 20, 'marginTop': 20}),
-])  # ✅ Ensuring correct indentation & bracket closure
+]),
 
 
 # FAQ Section
