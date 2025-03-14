@@ -30,6 +30,7 @@ dose_values = np.linspace(0, 100, 100)
 lnt_risk = dose_values * 0.01
 
 # Layout for the app
+# Layout for the app
 app.layout = html.Div([
 
     html.H1("Understanding Radiation Exposure and Risk", style={'textAlign': 'center'}),
@@ -48,7 +49,7 @@ app.layout = html.Div([
         html.H3("Introduction"),
         html.P("Radiation – the word sounds scary. But what is it really? "
                "Would it surprise you to know that you experience radiation every day? "
-               "Radiation can be broadly defined as energy that travels in waves or particles. "),
+               "Radiation can be broadly defined as energy that travels in waves or particles."),
         html.P("Non-Ionizing Radiation is low energy in nature, so it is generally safe. "
                "This type of radiation shows up in your everyday life as microwaves, radio waves, and visible light."),
         html.P("The higher energy of Ionizing Radiation allows it to kick out electrons from an atom. "
@@ -98,7 +99,8 @@ app.layout = html.Div([
         html.H3("Frequently Asked Questions (FAQ)"),
         html.Details([
             html.Summary("What are Sv and mSv?"),
-            html.P("Sv = Sievert, which is 1 Joule per kilogram. mSv = millisievert, which is 1/1000 of a Sv."),
+            html.P("Sv = Sievert, which is 1 Joule per kilogram. This is the international system unit for dose equivalent. "
+                   "mSv = millisievert, which is 1/1000 of a Sv."),
         ]),
         html.Details([
             html.Summary("What is background radiation? Is it harmful?"),
@@ -111,7 +113,13 @@ app.layout = html.Div([
         ]),
         html.Details([
             html.Summary("Is radiation from medical imaging safe?"),
-            html.P("Medical imaging, such as CT scans and X-rays, delivers ionizing radiation in controlled environments."),
+            html.P("Medical imaging, such as CT scans and X-rays, delivers ionizing radiation in controlled environments. "
+                   "The benefits generally outweigh the risks."),
+        ]),
+        html.Details([
+            html.Summary("What is the difference between ionizing and non-ionizing radiation?"),
+            html.P("Ionizing radiation (e.g., X-rays, gamma rays) carries enough energy to remove tightly bound electrons from atoms, "
+                   "which can damage cells. Non-ionizing radiation (e.g., radio waves, microwaves) does not have enough energy to ionize atoms."),
         ]),
     ]),
 
@@ -119,17 +127,38 @@ app.layout = html.Div([
     html.Div(id='references', children=[
         html.H3("References"),
         html.Ul([
-            html.Li(html.A("Health Physics Society", href="https://hps.org/hpspublications/radiationfactsheets.html", target="_blank")),
-            html.Li(html.A("International Commission on Radiological Protection (ICRP)", href="https://www.icrp.org/page.asp?id=5", target="_blank")),
-            html.Li(html.A("National Council on Radiation Protection and Measurements (NCRP)", href="https://ncrponline.org/", target="_blank")),
-        ]),
+            html.Li(html.A("Health Physics Society",
+                           href="https://hps.org/hpspublications/radiationfactsheets.html", target="_blank")),
+            html.Li(html.A("International Commission on Radiological Protection (ICRP)",
+                           href="https://www.icrp.org/page.asp?id=5", target="_blank")),
+            html.Li(html.A("National Council on Radiation Protection and Measurements (NCRP)",
+                           href="https://ncrponline.org/", target="_blank")),
+            html.Li(html.A("BEIR VII Reports",
+                           href="https://nap.nationalacademies.org/resource/11340/beir_vii_final.pdf", target="_blank")),
     ]),
 
     # Conclusion Section
     html.Div(id='conclusion', children=[
         html.H3("Conclusion"),
-        html.P("Radiation is a part of everyday life, and complete avoidance is neither necessary nor possible."),
-        html.P("By understanding exposure sources and risk models, we can make informed choices without unnecessary fear."),
+        html.P("""
+            Understanding radiation exposure and risk is essential for making informed health and safety decisions.
+            While radiation often carries a stigma, it is an integral part of modern life, from medical diagnostics to energy production.
+            By breaking down exposure sources, dose-response models, and personal risk factors, this website aims to provide clarity on this complex subject.
+        """),
+        html.P("""
+            Different models of radiation risk such as the Linear No-Threshold (LNT), Threshold, and Hormesis reflect the ongoing debate among 
+        scientists and regulators. The LNT model assumes all exposure carries some risk, while the Threshold model suggests a safe limit, 
+        and the Hormesis model argues that low doses may even be beneficial. These perspectives influence safety standards and policies, 
+        affecting everything from occupational exposure limits to space exploration guidelines. By understanding these models, 
+        individuals can make informed decisions regarding radiation-related risks and make choices based on scientific evidence rather than fear.
+        """),
+        html.P("""
+            In conclusion, radiation is a part of everyday life, and complete avoidance is neither necessary nor possible. 
+        Instead, the key is risk awareness and responsible decision-making. Whether considering medical procedures, 
+        occupational hazards, or lifestyle choices, having a solid understanding of radiation principles allows individuals to 
+        take the correct precautions without unnecessary anxiety. This site serves as a foundation for further exploration and encourages 
+        users to continue learning about radiation safety from reliable sources.
+        """),
     ]),
 
     # Video Section
@@ -143,7 +172,7 @@ app.layout = html.Div([
         )
     ])
 
-])  # ✅ Ensuring proper closure of `app.layout`
+])  # ✅ This ensures `app.layout` is correctly closed.
 
 # Run the app
 if __name__ == "__main__":
