@@ -34,7 +34,7 @@ app.layout = html.Div(
     style={'backgroundColor': 'white', 'padding': '20px'},
     children=[
         html.H1("Understanding Radiation Exposure and Risk", style={'textAlign': 'center'}),
-        html.H5("Created by Mahde Abusaleh", style={'textAlign': 'center', 'marginBottom': 20, 'color': 'gray'}),
+        html.H5("Created by Low Dose Radiation Explanation Group 1 2025", style={'textAlign': 'center', 'marginBottom': 20, 'color': 'gray'}),
 
         # Navigation Bar
         html.Div([
