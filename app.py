@@ -31,8 +31,9 @@ lnt_risk = dose_values * 0.01
 
 # Layout for the app
 app.layout = html.Div([
+
     html.H1("Understanding Radiation Exposure and Risk", style={'textAlign': 'center'}),
-    
+
     # Navigation Bar
     html.Div([
         html.A('Exposure Sources | ', href='#exposure', style={'cursor': 'pointer', 'textDecoration': 'none'}),
@@ -41,6 +42,7 @@ app.layout = html.Div([
         html.A('FAQ | ', href='#faq', style={'cursor': 'pointer', 'textDecoration': 'none'}),
         html.A('Conclusion', href='#conclusion', style={'cursor': 'pointer', 'textDecoration': 'none'})
     ], style={'textAlign': 'center', 'marginBottom': 20}),
+
     
     # Introduction Section
     html.Div(id="introduction", children=[
@@ -126,8 +128,8 @@ html.Div(id='references', children=[
                        href="https://www.nrc.gov/", target="_blank")),
         html.Li(html.A("Centers for Disease Control and Prevention (CDC)",
                        href="https://www.cdc.gov/", target="_blank")),
+      ]),
     ])
-]),  # ✅ Ensuring the References section is properly closed
 
 # Conclusion Section
 html.Div(id='conclusion', children=[
@@ -152,19 +154,19 @@ html.Div(id='conclusion', children=[
         take the correct precautions without unnecessary anxiety. This site serves as a foundation for further exploration and encourages 
         users to continue learning about radiation safety from reliable sources.
     """)
-]),  # ✅ Ensuring the Conclusion section is properly closed
+   ]),
+    # Video Section
+    html.Div(id="video", children=[
+        html.H3("Radiation Exposure Explained - Video Resource"),
+        html.Iframe(
+            src="https://www.youtube.com/embed/uzqsnxZBLNE",
+            width="700",
+            height="400",
+            style={"border": "none", "display": "block", "margin": "auto"}
+        )
+    ])
 
-# Video Section
-html.Div(id="video", children=[
-    html.H3("Radiation Exposure Explained - Video Resource"),
-    html.Iframe(
-        src="https://www.youtube.com/embed/uzqsnxZBLNE",
-        width="700",
-        height="400",
-        style={"border": "none", "display": "block", "margin": "auto"}
-    )
-])  # ✅ Ensuring the Video section is properly closed
-
+])
 
 # Callback for radiation dose calculator
 @app.callback(
